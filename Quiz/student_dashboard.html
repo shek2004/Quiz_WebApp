@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <center>
+        <div class="dashboard-container">
+            <!-- Timer -->
+            <div id="timerContainer">
+                <p id="timerDisplay" style="display: none;">Time Remaining: 00:00</p>
+            </div>
+
+            <!-- Header -->
+            <div class="header">
+                <div id="welcomeMessage"></div>
+                <button id="logout" class="logout-button">Logout</button>
+            </div>
+
+            <!-- Available Quizzes Section -->
+            <h2 class="section-title">Available Quizzes</h2>
+            <ul id="availableQuizzes" class="quiz-list"></ul>
+
+            <!-- Attempted Quizzes Section -->
+            <h2 class="section-title">Your Attempted Quizzes</h2>
+            <ul id="attemptedQuizzes" class="quiz-list"></ul>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer" style="display: none;">
+                <div id="quizQuestions">
+                    <!-- Quiz questions will be dynamically rendered here -->
+                </div>
+                <button id="submitQuizButton">Submit Quiz</button>
+            </div>
+        </div>
+    </center>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

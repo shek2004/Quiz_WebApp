@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <center>
+        <div class="results-container">
+            <h2 id="quizTitle" class="quiz-title"></h2>
+            <ul id="specificResults" class="result-list"></ul>
+            <button onclick="goBack()" class="back-button">Back to Dashboard</button>
+        </div>
+    </center>
+    <script>
+        // Retrieve data from localStorage
+        const results = JSON.parse(localStorage.getItem("results")) || [];
+        const quizzes = JSON.parse(localStorage.getItem("quizzes")) || [];
+        const selectedQuiz = localStorage.getItem("selectedQuiz");
+
+        // Load results for the selected quiz
+        document.addEventListener("DOMContentLoaded", () => {
+            const quizTitleElement = document.getElementById("quizTitle");
+            const resultsList = document.getElementById("specificResults");
+
+            if (selectedQuiz) {
+                quizTitleElement.textContent = `Results for: ${selectedQuiz}`;
+
+                // Filter results for this specific quiz
+                const specificResults = results.filter(
+                    (result) => result.quizTitle === selectedQuiz
+                );
+
+                if (specificResults.length > 0) {
+                    resultsList.innerHTML = specificResults
+                        .map(
+                            (result) => `
+                                <li>
+                                    ${result.student} scored ${result.score}
+                                </li>`
+                        )
+                        .join("");
+                } else {
+                    resultsList.innerHTML = "<li>No results found for this quiz.</li>";
+                }
+            } else {
+                quizTitleElement.textContent = "No quiz selected.";
+                resultsList.innerHTML = "<li>Please go back and select a quiz.</li>";
+            }
+        });
+
+        // Go back to the teacher dashboard
+        function goBack() {
+            window.location.href = "teacher_dashboard.html";
+        }
+    </script>
+</body>
+
+</html>
