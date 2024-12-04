@@ -1,0 +1,129 @@
+/* Dashboard Container Styling */
+.dashboard-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #e74c3c;
+}
+
+/* Create Quiz Button Styling */
+.create-quiz-container {
+  margin-bottom: 20px;
+}
+
+.create-quiz-button {
+  background-color: #3498db;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-quiz-button:hover {
+  background-color: #2980b9;
+}
+
+/* Section Title Styling */
+.section-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Quiz List Styling */
+.quiz-list,
+.result-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quiz-list li,
+.result-list li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quiz-list button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quiz-list button:hover {
+  background-color: #4cae4c;
+}
+
+.quiz-list li {
+  display: flex;
+  align-items: center; /* Align items (text and buttons) vertically */
+  justify-content: space-between; /* Distribute space between quiz name and buttons */
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.quiz-list li > span {
+  flex-grow: 1; /* Allow the quiz name to take up remaining space */
+  word-wrap: break-word; /* Ensure long quiz names break into the next line if needed */
+}
+
+.quiz-list li > button {
+  margin: 0 5px;
+  min-width: 120px; /* Ensure consistent button size */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* Ensure buttons are evenly spaced */
+  gap: 10px; /* Add spacing between buttons */
+}
+
+
+.timer{
+  font-weight: bold;
+  font-size: 1.2em;
+  color: red;
+}

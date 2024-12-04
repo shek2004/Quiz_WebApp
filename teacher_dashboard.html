@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <center>
+        <div class="dashboard-container">
+            <div class="header">
+                <div id="welcomeMessage"></div>
+                <button id="logout" class="logout-button">Logout</button>
+            </div>
+
+            <div class="create-quiz-container">
+                <input id="quizTitleInput" type="text" placeholder="Enter Quiz Title" />
+                <input id="quizCodeInput" type="text" placeholder="Enter Quiz Code" />
+                <input id="quizTimeInput" type="number" placeholder="Time Limit (minutes)" />
+                <button id="createQuizButton" class="create-quiz-button" onclick="createQuiz()">Create Quiz</button>
+            </div>
+            
+
+            <h2 class="section-title">Your Quizzes</h2>
+            <ul id="quizList" class="quiz-list"></ul>
+        </div>
+    </center>
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderQuizzes();
+        });
+
+        function renderQuizzes() {
+            const quizList = document.getElementById("quizList");
+            if (!quizList) return;
+
+            quizList.innerHTML = quizzes
+                .filter((quiz) => quiz.createdBy === currentUser.username)
+                .map(
+                    (quiz, index) => `
+                    <li>
+                        ${quiz.title} (Code: ${quiz.code}) 
+                        <button onclick="addQuestions(${index})">Add Questions</button>
+                        <button onclick="deleteQuiz(${index})">Delete Quiz</button>
+                        <button onclick="viewResults('${quiz.title}')">View Results</button>
+                    </li>`
+                )
+                .join("");
+        }
+
+        function createQuiz() {
+            const title = document.getElementById("quizTitleInput").value;
+            const code = document.getElementById("quizCodeInput").value;
+            const timeLimit = parseInt(document.getElementById("quizTimeInput").value, 10); // Time in minutes
+
+            if (title && code && timeLimit > 0) {
+                const newQuiz = {
+                    title,
+                    code,
+                    timeLimit, // Save time limit
+                    createdBy: currentUser.username,
+                    questions: [],
+                };
+
+                quizzes.push(newQuiz);
+                localStorage.setItem("quizzes", JSON.stringify(quizzes));
+                alert("Quiz created successfully!");
+                renderQuizzes();
+            } else {
+                alert("Please fill out all fields and ensure time is a positive number.");
+            }
+        }
+        
+        // Redirect to the results page when "View Results" is clicked
+        window.viewResults = function (quizTitle) {
+            // Store the quizTitle temporarily in localStorage
+            localStorage.setItem("selectedQuiz", quizTitle);
+            window.location.href = "quiz_results.html";
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* General Page Styling */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .create-quiz-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
