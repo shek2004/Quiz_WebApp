@@ -99,7 +99,7 @@ function handleLogout() {
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
     alert("Logged out successfully!");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   });
 }
 
